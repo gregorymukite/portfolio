@@ -3,8 +3,7 @@
     "builds": [
       {
         "src": "manage.py",
-        "use": "@vercel/python",
-        "config":{"maxlambdaSize": "15mb", "runtime": "python3.12"}
+        "use": "@vercel/python"
       }
     ],
     "routes": [
@@ -12,6 +11,20 @@
         "src": "/(.*)",
         "dest": "manage.py"
       }
-    ]     
- }
-    
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "myproject.settings",
+      "SECRET_KEY": "@@SECRET_KEY@@",
+      "DEBUG": "false",
+      "ALLOWED_HOSTS": "your-vercel-domain.vercel.app"
+    },
+    "build": {
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "myproject.settings",
+        "SECRET_KEY": "@@SECRET_KEY@@",
+        "DEBUG": "false",
+        "ALLOWED_HOSTS": "your-vercel-domain.vercel.app"
+      }
+    }
+  }
+  
