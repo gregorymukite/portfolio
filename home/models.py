@@ -24,7 +24,6 @@ class Testmonial(models.Model):
     
  
 class Contact(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()

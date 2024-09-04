@@ -30,6 +30,7 @@ def contact(request):
             fail_silently=False,
         )
         messages.success(request, 'Your message has been sent successfully!')
+        mycontact = Contact.objects.create(name=name, email=email, message=message)
         return render(request, 'contact/contact.html', {'name': name})
         
     else:
