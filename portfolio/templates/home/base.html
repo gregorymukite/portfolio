@@ -8,6 +8,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gregory Mukite" />
+    <meta property="og:description" content="My Portfolio Website" />
+    <meta property="og:url" content="https://gregorymukite.pythonanywhere.com/" />
+    <meta property="og:image" content="https://onedrive.live.com/?cid=5FCFC91FFF931FDA&id=5FCFC91FFF931FDA%2164295&parId=root&o=OneUp" />
+    <meta property="og:type" content="website" />
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -107,9 +113,10 @@
                 <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                 <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                 <a href="{%url 'service' %}" class="nav-item nav-link">Services</a>
+                <a href="{%url 'skills' %}" class="nav-item nav-link">Skills</a>
                 <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Get in Touch<i class="fa fa-arrow-right ms-3"></i></a>
+            
         </div>
     </nav>
     <!-- Navbar End -->
@@ -173,27 +180,32 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js'%}"></script>
-    <script src="{% static 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js'%}"></script>
-    <script src="{% static 'lib/wow/wow.min.js'%}"></script>
-    <script src="{% static 'lib/easing/easing.min.js'%}"></script>
-    <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
-    <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
-    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
-    <script src="{% static 'lib/tempusdominus/js/moment.min.js'%}"></script>
-    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js'%}"></script>
-    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js'%}"></script>
-    <!-- Template Javascript -->
-    <script src="{% static 'js/main.js'%}"></script>
-    <script src="{% static 'js/jquery.js'%}"></script>
-    <script src="{% static 'js/jquery.sticky.js'%}"></script>
-    <script src="{% static 'js/progressbar.js'%}"></script>
-    <!--owl.carousel.js-->
-    <script src="{% static 'js/owl.carousel.min.js'%}"></script>
+   <!-- External Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    
-    <!--Custom JS-->
-    <script src="{% static 'js/custom.js'%}"></script>
+<!-- Local Scripts -->
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+<script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+<script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/progressbar.js' %}"></script>
+
+<!-- Owl Carousel -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<!-- Custom JS -->
+<script src="{% static 'js/custom.js' %}"></script>
+
 
 </body>
 

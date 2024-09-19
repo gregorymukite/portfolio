@@ -6,223 +6,134 @@
 {% block content %}
 
 
-    <!-- About Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-flex flex-column">
-                        {% for images in dashboard %}
-                        <img class="img-fluid rounded w-75 align-self-end" src="{{images.a_img1.url}}" alt="">
-                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="{{images.a_img2.url}}" alt="" style="margin-top: -25%;">
-                        {%endfor%}
-                        
-                    </div>
-                </div>
-                
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <p class="d-inline-block border rounded-pill py-1 px-4">About Me</p>
-                    <h1 class="mb-4">Why You Should Trust Me? Get Know About Me!</h1>
-                    {% for about in about %}
-                    <p>{{about.bio}}</p>
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="d-flex flex-column">
+                    {% for images in dashboard %}
+                    <img class="img-fluid rounded w-75 align-self-end" src="{{images.a_img1.url}}" alt="">
+                    <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="{{images.a_img2.url}}" alt=""
+                        style="margin-top: -25%;">
                     {%endfor%}
-                    <p class="mb-4">Some of my skills include</p>
-                    {% for skills in skills %}
-                    <p><i class="far fa-check-circle text-primary me-3"></i>{{skills.skills}}</p>
-                    {%endfor%}
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="https://onedrive.live.com/?cid=5FCFC91FFF931FDA&id=5FCFC91FFF931FDA%2164191&parId=root&o=OneUp">Read More</a>
-                </div>
 
+                </div>
             </div>
+
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <p class="d-inline-block border rounded-pill py-1 px-4">About Me</p>
+                <h1 class="mb-4">Why You Should Trust Me? Get Know About Me!</h1>
+                {% for about in about %}
+                <p>{{about.profesional_background}}</p>
+                {%endfor%}
+                <p class="mb-4">Some of my skills include:</p>
+                <div class="row">
+                    
+                    {% for skill_cartegory in skills %}
+                    <div class="col-lg-6">
+                        <p><i class="far fa-check-circle text-primary me-3"></i>{{skill_cartegory.skill}}</p>
+                    </div>
+                    {%endfor%}
+
+                </div>
+                <a class="btn btn-primary rounded-pill py-3 px-5 mt-3"
+                    href="https://onedrive.live.com/?cid=5FCFC91FFF931FDA&id=5FCFC91FFF931FDA%2164191&parId=root&o=OneUp">Read
+                    More</a>
+            </div>
+
         </div>
     </div>
-    <!-- About End -->
-  
-    		<!--education start -->
-		<section id="education" class="education">
-			<div class="section-heading text-center">
-				<h2>education</h2>
-			</div>
-			<div class="container">
-				<div class="education-horizontal-timeline">
-					<div class="row">
-                        {% for education in education %}
-						<div class="col-sm-4">
-							<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>{{education.start_date}} - {{education.end_date}}</h2>
-									<h3>{{ education.certificate}}</h3>
-								</div><!--/.experience-time-->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											{{education.school_name}}
-										</h4>
-										<h5>{{ education.grade }}</h5>
-										<p class="description">
-											Duis aute irure dolor in reprehenderit in vol patate velit esse cillum dolore eu fugiat nulla pari. Excepteur sint occana inna tecat cupidatat non proident. 
-										</p>
-									</div><!--/.timeline-content-->
-								</div><!--/.timeline-->
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
+</div>
+<!-- About End -->
 
-		</section><!--/.education-->
-	
-    		<!--skills start -->
-		<section id="skills" class="skills">
-            <div class="skill-content">
-                <div class="section-heading text-center">
-                    <h2>skills</h2>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="single-skill-content">
-                                <div class="barWrapper">
-                                    <span class="progressText">adobe photoshop</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-                                                  
-                                            </div>
-                                        </div>
-                                        <h3>90%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                                <div class="barWrapper">
-                                    <span class="progressText">adobe illustrator</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                           <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="10" aria-valuemax="100" style="">
-                                                
-                                           </div>
-                                        </div>
-                                        <h3>85%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                                <div class="barWrapper">
-                                    <span class="progressText">adobe after effects</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                           <div class="progress-bar" role="progressbar" aria-valuenow="97" aria-valuemin="10" aria-valuemax="100" style="">
-                                               
-                                           </div>
-                                        </div>
-                                        <h3>97%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                                <div class="barWrapper">
-                                    <span class="progressText">sketch</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                           <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-                                                
-                                           </div>
-                                        </div>
-                                        <h3>90%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
+<!--education start -->
+<section id="education" class="education">
+    <div class="container bg-white">
+        <div class="section-heading text-center">
+            <h2>education</h2>
+        </div>
+        <div class="education-horizontal-timeline ">
+            <div class="row ">
+                {% for education in education %}
+
+                <div class="col-md-4">
+                        <article class="card mb-4">
+
+                        <div class="single-horizontal-timeline">
+                            <div class="experience-time">
+                                <h2>{{education.start_year}} - {{education.end_year}}</h2>
+                                <h3>{{ education.certificate}}</h3>
+                            </div><!--/.experience-time-->
+                            <div class="timeline-horizontal-border">
+                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                <span class="single-timeline-horizontal"></span>
                             </div>
+                            <div class="timeline">
+                                <div class="timeline-content">
+                                    <h4 class="title">
+                                        {{education.school_name}}
+                                    </h4>
+                                    <h5>{{ education.grade }}</h5>
+                                    <p class="description">
+                                        Duis aute irure dolor in reprehenderit in vol patate velit esse cillum dolore eu
+                                        fugiat nulla pari. Excepteur sint occana inna tecat cupidatat non proident.
+                                    </p>
+                                    <a class="btn btn-primary" href="{% url 'education' education.id %}">Read More>>></a>
+                                </div><!--/.timeline-content-->
+                            </div><!--/.timeline-->
                         </div>
-                        <div class="col-md-6">
-                            <div class="single-skill-content">
-                                <div class="barWrapper">
-                                    <span class="progressText">html 5</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-                                                
-                                            </div>
-                                        </div>
-                                        <h3>90%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                                <div class="barWrapper">
-                                    <span class="progressText">css 3 animation</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                           <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="10" aria-valuemax="100" style="">
-                                                
-                                           </div>
-                                        </div>
-                                        <h3>85%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                                <div class="barWrapper">
-                                    <span class="progressText">communication</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                           <div class="progress-bar" role="progressbar" aria-valuenow="97" aria-valuemin="10" aria-valuemax="100" style="">
-                                               
-                                           </div>
-                                        </div>
-                                        <h3>97%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                                <div class="barWrapper">
-                                    <span class="progressText"> creativity</span>
-                                    <div class="single-progress-txt">
-                                        <div class="progress ">
-                                           <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-                                                
-                                           </div>
-                                        </div>
-                                        <h3>90%</h3>	
-                                    </div>
-                                </div><!-- /.barWrapper -->
-                            </div>
-                        </div>
-                    </div><!-- /.row -->
-                </div>	<!-- /.container -->		
-            </div><!-- /.skill-content-->
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
 
-    </section><!--/.skills-->
-    <!--skills end -->
+    </div>
 
-    <section id="new-cars" class="new-cars">
-        <div class="container">
-            <div class="section-header">
+
+</section><!--/.education-->
+
+
+<section class="mt-0 bg-white">
+
+
+    <div class="container bg-white mt-0">
+        <!--/.section-header-->
+        <div class="new-cars-content">
+            <div class="section-header section-heading">
                 <h2>My Projects</h2>
-            </div><!--/.section-header-->
-            <div class="new-cars-content">
-                <div class="owl-carousel owl-theme" id="new-cars-carousel">
-                    {% for project in project %}
-                    <div class="new-cars-item">
-                        <div class="single-new-cars-item">
-                            <div class="row">
-                                <div class="col-md-7 col-sm-12">
-                                    <div class="new-cars-img">
-                                        <img src="{{project.image.url}}" alt="img"/>
-                                    </div><!--/.new-cars-img-->
-                                </div>
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="new-cars-txt">
-                                        <h2><a href="#">{{ project.title }}</a></h2>
-                                        <p>{{project.description}}</p>
-                                        <p class="new-cars-para2">
-                                            Sed ut pers unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. 
-                                        </p>
-                                        <button class="btn btn-primary w-100 py-3" >View Details</button>
-                                    </div><!--/.new-cars-txt-->	
-                                </div><!--/.col-->
-                            </div><!--/.row-->
-                        </div><!--/.single-new-cars-item-->
-                    </div><!--/.new-cars-item-->
-                    {%endfor%}
-                </div><!--/#new-cars-carousel-->
-            </div><!--/.new-cars-content-->
-        </div><!--/.container-->
-    </section><!--/.new-cars-->
-    <!--new-cars end -->
+            </div>
+            <div class="owl-carousel owl-theme" id="new-cars-carousel">
+                {% for project in project %}
+                <div class="new-cars-item">
+                    <div class="single-new-cars-item">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-12">
+                                <div class="new-cars-img">
+                                    <img src="{{project.image.url}}" alt="img" />
+                                </div><!--/.new-cars-img-->
+                            </div>
+                            <div class="col-md-7 col-sm-12">
+                                <div class="new-cars-txt">
+                                    <h2 class="text-center">{{ project.title }}</h2>
+                                    {% for overview in project.overview_set.all %}
+                                    <p class="">{{overview.summary}}</p>
+                                    
+                                    {% endfor %}
+                                    <a class="btn btn-primary fw-bold py-3" href="{% url 'project_details' project.id %}">Read More>></a>
+                                </div><!--/.new-cars-txt-->
+
+                            </div><!--/.col-->
+                        </div><!--/.row-->
+                    </div><!--/.single-new-cars-item-->
+                </div><!--/.new-cars-item-->
+                {%endfor%}
+            </div><!--/#new-cars-carousel-->
+        </div><!--/.new-cars-content-->
+    </div><!--/.container-->
+</section><!--/.new-cars-->
+<!--new-cars end -->
 
 
 {% endblock content %}

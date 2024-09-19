@@ -826,3 +826,51 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 }
 
 .experience-time-responsive{display: none;}
+
+
+
+.education-section {
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+.education-header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+.education-header h3 {
+    margin: 0;
+}
+.education-body {
+    padding: 20px;
+}
+.education-body h5 {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+.education-body p {
+    margin-bottom: 10px;
+}
+.achievement-list,
+.project-list,
+.coursework-list {
+    margin-left: 20px;
+}
+.achievement-list li,
+.project-list li,
+.coursework-list li {
+    margin-bottom: 5px;
+}
+.education-footer {
+    text-align: right;
+    margin-top: 20px;
+}
+.education-footer .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 50px;
+}

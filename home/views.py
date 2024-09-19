@@ -9,11 +9,13 @@ def home(request):
     about = About.objects.all()
     slide = SlideImage.objects.all()
     dashboard = Dashboard.objects.all()
+    skill_cartegory = Skill_Cartegory.objects.all()
 
     context = {
         'dashboard':dashboard,
         'about':about,
         'slide':slide,
+        'skill_cartegory': skill_cartegory,
     }
     return render(request, 'home/index.html', context)
 

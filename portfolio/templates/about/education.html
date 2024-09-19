@@ -1,0 +1,107 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif;
+    }
+    .education-section {
+        background-color: #ffffff;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+    .education-header {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 15px;
+        border-radius: 10px 10px 0 0;
+    }
+    .education-header h3 {
+        margin: 0;
+    }
+    .education-body {
+        padding: 20px;
+    }
+    .education-body h5 {
+        color: #007bff;
+        margin-bottom: 15px;
+    }
+    .education-body p {
+        margin-bottom: 10px;
+    }
+    .achievement-list,
+    .project-list,
+    .coursework-list {
+        margin-left: 20px;
+    }
+    .achievement-list li,
+    .project-list li,
+    .coursework-list li {
+        margin-bottom: 5px;
+    }
+    .education-footer {
+        text-align: right;
+        margin-top: 20px;
+    }
+    .education-footer .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 50px;
+    }
+</style>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Education Section Start -->
+            <div class="education-section">
+                <!-- Education Header -->
+                <div class="education-header">
+                    <h3 class="text-light">{{education.school_name}}</h3>
+                </div>
+                <!-- Education Body -->
+                <div class="education-body">
+                    <!-- Course and Years -->
+                    <h5>{{education.course}}</h5>
+                    <p><strong>Year of Study:</strong> {{education.start_year}} - {{education.end_year}}</p>
+                    <p><strong>Year of Graduation:</strong> {{education.end_year}}</p>
+                    <p><strong>Grade:</strong> {{education.grade}}</p>
+
+
+                    <!-- Relevant Coursework -->
+
+                   
+                    {% if education.coursework_set.exists %}
+                    <h5>Relevant Coursework:</h5>
+                    <ul class="coursework-list">
+                        {% for coursework in education.coursework_set.all %}
+                        <li>{{coursework.relevant_course_Work}}</li>
+                        {%endfor%}
+                    </ul>
+                    {% endif %}
+
+                    <!-- Achievements -->
+                    {% if education.archievement_set.exists %}
+                    <h5>Achievements:</h5>
+                    <ul class="achievement-list">
+                        {% for archievement in education.archievement_set.all %}
+                        <li>{{archievement.descri}}</li>
+                        {%endfor%}
+                    </ul>
+                    {%endif%}
+                    
+                </div>
+            </div>
+            <!-- Education Section End -->
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
