@@ -109,19 +109,23 @@
                 <div class="new-cars-item">
                     <div class="single-new-cars-item">
                         <div class="row">
-                            <div class="col-md-5 col-sm-12">
+                            <div class="col-md-5">
+                                <div class = "card">
                                 <div class="new-cars-img">
                                     <img src="{{project.image.url}}" alt="img" />
                                 </div><!--/.new-cars-img-->
                             </div>
-                            <div class="col-md-7 col-sm-12">
+                            </div>
+                            <div class="col-md-7">
                                 <div class="new-cars-txt">
+                                    <div class="card">
                                     <h2 class="text-center">{{ project.title }}</h2>
                                     {% for overview in project.overview_set.all %}
                                     <p class="">{{overview.summary}}</p>
                                     
                                     {% endfor %}
                                     <a class="btn btn-primary fw-bold py-3" href="{% url 'project_details' project.id %}">Read More>></a>
+                                </div>
                                 </div><!--/.new-cars-txt-->
 
                             </div><!--/.col-->
