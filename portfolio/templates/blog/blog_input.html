@@ -1,0 +1,149 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    button {
+        margin-top: 20px;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .section-container {
+        margin-bottom: 20px;
+    }
+</style>
+<div class="container"></div>
+<div class="row">
+    <div class="col-md-3">
+        <aside class="col-md-2 "></aside>
+        <!--   SIDEBAR   -->
+        <ul class="list-group">
+            {% for category in category %}
+            <a class="list-group-item active" href="#">Cartegories</a>
+            {% endfor %}
+            <a class="list-group-item" href="{% url 'blog_input' %}"> Create a blog </a>
+        </ul>
+        <br>
+
+        </aside>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <div class="bg-white card mr-2">
+                <h1>Create Blog Post</h1>
+                <div class="mr-5 ml-2  col-md-12">
+                    <form class="form-group" action="{% url 'blog_input' %}" method="POST">
+                        {% csrf_token %}
+                        <!-- Blog Post Basic Info -->
+                        <label for="author">Full Name</label>
+                        <input class="form-control" type="text" id="name" name="author" placeholder="enter your name"
+                            required>
+
+
+                        <label for="title">Post Title</label>
+                        <input class="form-control" type="text" id="title" name="title"
+                            placeholder="Enter the blog post title" required>
+
+
+
+                        <label for="category">Category</label>
+                        <select class="custom-select" id="category" name="category">
+                            {%for category in categories%}
+                            <option value="">{{category.name}}</option>
+                            {%endfor%}
+                            <!-- Dynamically populated from the backend -->
+                        </select>
+                        <!-- Blog Sections -->
+                        <div id="sections">
+                            <div class="section-container">
+                                
+                            </div>
+                        </div>
+                        <p style="font-size: 0.6rem;">To add anothe paragraph or section with the same title, click 'Add another section' below,
+                            only save when
+                            done</p>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <button class="btn btn-primary w-100" type="button" onclick="addHeading()">Add Heading</button>
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group">
+                                    <button class="btn btn-primary w-100" type="button" onclick="addParagraph()">Add Paragraph</button>
+                                </div> <!-- form-group end.// -->
+                            </div> 
+                        
+
+                        <!-- Submit Button -->
+                        <button class="btn btn-primary w-100" type="submit">Save Blog Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            let sectionCount = 1;
+
+            // Function to dynamically add sections
+            function addParagraph() {
+                sectionCount++;
+                const sectionsContainer = document.getElementById('sections');
+
+                const newSection = document.createElement('div');
+                newSection.className = 'section-container';
+
+                newSection.innerHTML = `
+            <label for="section_type_${sectionCount}">Section Type</label>
+            <select class="form-control" id="section_type_${sectionCount}" name="section_type_${sectionCount}">
+                <option value="paragraph">Paragraph</option>
+            </select>
+
+            <label for="content_${sectionCount}">Content</label>
+            <textarea class='form-control' id="content_${sectionCount}" name="content_${sectionCount}" rows="4" placeholder="Paragraph"></textarea>
+        `;
+
+                sectionsContainer.appendChild(newSection);
+            }
+            function addHeading() {
+                sectionCount++;
+                const sectionsContainer = document.getElementById('sections');
+
+                const newSection = document.createElement('div');
+                newSection.className = 'section-container';
+
+                newSection.innerHTML = `
+            <label for="section_type_${sectionCount}">Section Type</label>
+            <select class="form-control" id="section_type_${sectionCount}" name="section_type_${sectionCount}">
+                <option value="heading">Heading</option>
+            </select>
+
+            <label for="content_${sectionCount}">Heading</label>
+            <input class='form-control' id="content_${sectionCount}" name="content_${sectionCount}" rows="4" placeholder="Heading"></input>
+        `;
+
+                sectionsContainer.appendChild(newSection);
+            }
+        </script>
+    </div>
+</div>
+
+{% endblock content %}

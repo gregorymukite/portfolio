@@ -1,0 +1,184 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa;
+        color: #212529;
+    }
+
+    .blog-container {
+        max-width: 800px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .blog-header {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .blog-title {
+        color: #000000;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .blog-image img {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .blog-content {
+        line-height: 1.7;
+        font-size: 1.1rem;
+    }
+
+    .blog-meta {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .cta-button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-top: 20px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .author-section {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        color: #6c757d;
+    }
+
+    .comments-section {
+        margin-top: 40px;
+    }
+
+    .comment {
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 0 18px 18px 18px;
+    }
+
+    .comment-author {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .comment-date {
+        font-size: 0.8rem;
+        color: #6c757d;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <aside class="col-md-2 mt-4"></aside>
+            <!--   SIDEBAR   -->
+            <ul class="list-group">
+                <a class="list-group-item active" href="#">Cartegories</a>
+                {% for category in category %}
+                <a class="list-group-item" href="#">{{category.name}}</a>
+                {% endfor %}
+                <a class="list-group-item" href="{% url 'blog_input' %}"> Create a blog </a>
+            </ul>
+            <br>
+
+            </aside>
+        </div>
+        <div class="col-md-9">
+
+            <div class="col-md-11 mt-4">
+                <div class="container blog-container">
+
+                    <div class="col-md-12">
+                        <div class="blog-header">
+                            <h5 class="blog-title ">{{blog_posts.title}}</h5>
+                            <div class="author-section">
+                                <span>By<strong> {{ blog_posts.author }}</strong></span>
+                                <span>Created on: September 20, 2024</span>
+                            </div>
+                        </div>
+
+                        <!-- Blog Image -->
+                        
+
+                        <!-- Blog Content -->
+                        <div class="blog-sections">
+                            
+                            {% for section in blog_sections%}
+                            {% if section.section_type == 'heading' %}
+                            <h6>{{ section.content }}</h6>
+                            {% elif section.section_type == 'paragraph' %}
+                            <p>{{ section.content }}</p>
+                            {% elif section.section_type == 'image' %}
+                            <img src="{{ section.content }}" alt="Image for {{ blog_post.title }}">
+                            {% elif section.section_type == 'list' %}
+                            <ul>
+                                {% for item in section.content.splitlines %}
+                                <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% elif section.section_type == 'quote' %}
+                            <blockquote>{{ section.content }}</blockquote>
+                            {% endif %}
+                           
+
+
+                            {% endfor %}
+                            <br>
+                            
+                        </div>
+
+                        <!-- Blog Metadata -->
+                        <div class="blog-meta">
+                            <span>Category: Technology</span> | <span>Tags: #tech, #innovation</span>
+                        </div>
+
+                        
+
+                        <!-- Comment Section -->
+                        <div class="comments-section">
+                            <h5>Comments</h5>
+                            {% for comment in blog_posts.comment_set.all %}
+                            <div class="comment">
+                                <div class="comment-author"> {{comment.author}} </div>
+                                <div class="comment-date">{{comment.comment_date}}</div>
+                                <p>{{comment.comment}}</p>
+                            </div>
+                           {% endfor %}
+                            <form action="{% url 'create_comment' %}" method="POST">
+                                {% csrf_token %}
+                            <div class="form-group">
+                                <label>Write Your Comment</label>
+                                <input type="text" name="name" class="form-control" placeholder="Your name" required><br>
+                                <textarea class='form-control'  name="comment" rows="4" placeholder="Enter your Comment"></textarea>
+                            </div>
+                            <input type="hidden" name="blog_post_id" value="{{ blog_posts.id }}">
+                            <button type="submit" class="cta-button">Submit Comment</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

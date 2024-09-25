@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select, button {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .section-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create Blog Post</h1>
+    <form action="/save_blog_post/" method="POST">
+        <!-- Blog Post Basic Info -->
+        <label for="author">Full Name</label>
+        <input type="text" id="name" name="author" placeholder="enter your name" required>
+
+
+        <label for="title">Post Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter the blog post title" required>
+
+        
+
+        <label for="category">Category</label>
+        <select id="category" name="category">
+            <option value="">Select Category</option>
+            <!-- Dynamically populated from the backend -->
+        </select>
+
+        <label for="tags">Tags (comma-separated)</label>
+        <input type="text" id="tags" name="tags" placeholder="Enter tags (comma separated)">
+
+        <!-- Blog Sections -->
+        <div id="sections">
+            <div class="section-container">
+                <label for="section_type_1">Section Type</label>
+                <select id="section_type_1" name="section_type_1">
+                    <option value="heading">Heading</option>
+                    <option value="paragraph">Paragraph</option>
+                    <option value="image">Image</option>
+                    <option value="quote">Quote</option>
+                </select>
+
+                <label for="content_1">Content</label>
+                <textarea id="content_1" name="content_1" rows="4" placeholder="Enter section content"></textarea>
+            </div>
+        </div>
+
+        <button type="button" onclick="addSection()">Add Another Section</button>
+
+        <!-- Submit Button -->
+        <button type="submit">Save Blog Post</button>
+    </form>
+</div>
+
+<script>
+    let sectionCount = 1;
+
+    // Function to dynamically add sections
+    function addSection() {
+        sectionCount++;
+        const sectionsContainer = document.getElementById('sections');
+        
+        const newSection = document.createElement('div');
+        newSection.className = 'section-container';
+
+        newSection.innerHTML = `
+            <label for="section_type_${sectionCount}">Section Type</label>
+            <select id="section_type_${sectionCount}" name="section_type_${sectionCount}">
+                <option value="heading">Heading</option>
+                <option value="paragraph">Paragraph</option>
+                <option value="image">Image</option>
+                <option value="quote">Quote</option>
+            </select>
+
+            <label for="content_${sectionCount}">Content</label>
+            <textarea id="content_${sectionCount}" name="content_${sectionCount}" rows="4" placeholder="Enter section content"></textarea>
+        `;
+
+        sectionsContainer.appendChild(newSection);
+    }
+</script>
+
+</body>
+</html>

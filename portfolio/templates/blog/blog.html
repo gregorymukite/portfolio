@@ -1,0 +1,77 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <aside class="col-md-2 "></aside>
+            <!--   SIDEBAR   -->
+            <ul class="list-group">
+                <a class="list-group-item active" href="#">Cartegories</a>
+                {% for category in category %}
+                <a class="list-group-item" href="#">{{category.name}}</a>
+                {% endfor %}
+                <a class="list-group-item" href="{% url 'blog_input' %}"> Create a blog </a>
+            </ul>
+            <a class="list-group-item" href="{% url 'blog_input' %}"> Create a blog </a>
+            <br>
+
+            </aside>
+        </div>
+        {% if blog_posts%}
+        <div class="col-md-9">
+            <div class="row">
+                {% for blog_post in blog_posts %}
+                <div class="col-md-12">
+                    <div class="card card-product-grid">
+                        <div class="card-body">
+                           <a href=" {% url 'blog_details' blog_post.id %} "> <h4>{{ blog_post.title }}</h4></a>
+
+                            <p><strong>Category:</strong>
+                                {% if blog_post.category %}
+                                {{ blog_post.category.name }}
+                                {% else %}
+                                Uncategorized
+                                {% endif %}
+                            </p>
+
+
+                            <!-- Blog Content Sections -->
+                            <div class="blog-sections">
+                                {% for section in blog_sections%}
+                                {% if section.blog == blog_post %}
+                                {% if section.section_type == 'heading' %}
+                                <h6>{{ section.content }}</h6>
+                                {% elif section.section_type == 'paragraph' %}
+                                <p>{{ section.content }}</p>
+                                {% elif section.section_type == 'image' %}
+                                <img src="{{ section.content }}" alt="Image for {{ blog_post.title }}">
+                                {% elif section.section_type == 'list' %}
+                                <ul>
+                                    {% for item in section.content.splitlines %}
+                                    <li>{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% elif section.section_type == 'quote' %}
+                                <blockquote>{{ section.content }}</blockquote>
+                                {% endif %}
+                                {%endif%}
+
+
+                                {% endfor %}
+                                <br>
+                                <p><strong>Author:</strong> {{ blog_post.author }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <p>No blog posts found.</p>
+
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
